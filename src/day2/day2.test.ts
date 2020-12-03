@@ -2,8 +2,6 @@ import { countValid, isSledValid, isTobogganValid, parseEntry } from "./day2";
 import { sampleInput, puzzleInput } from "./input";
 import { lines } from "../util";
 
-console.log(lines(__dirname + "/text.txt"));
-
 describe("parseEntry", () => {
   it("should parse", () => {
     expect(parseEntry("1-3 a: abcde")).toEqual({
