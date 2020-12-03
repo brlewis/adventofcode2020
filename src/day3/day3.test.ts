@@ -20,7 +20,7 @@ describe("encounters", () => {
   });
   it("should solve", () => {
     const forest = parseForest(myForest);
-    expect(encounters(forest, 3, 1)).toEqual(7);
+    expect(encounters(forest, 3, 1)).toEqual(265);
   });
 });
 
@@ -31,6 +31,6 @@ describe("part2", () => {
   });
   it("should solve", () => {
     const forest = parseForest(myForest);
-    expect(part2(forest)).toEqual(7);
+    expect(part2(forest)).toEqual(3154761400);
   });
 });
