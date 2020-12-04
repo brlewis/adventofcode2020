@@ -22,7 +22,8 @@
     "build": "node src/build.js",
     "build:react": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "emacs": "emacsclient src/day`date +%-d`/day`date +%-d`{,.test}.ts"
   },
   "eslintConfig": {
     "extends": [
