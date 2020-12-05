@@ -43,16 +43,16 @@ getContents(`/${year}/day/${day}/input`, (contents) => {
 getContents(`/${year}/day/${day}`, (contents) => {
   const dom = new JSDOM(contents);
   debugger;
-  const sample = dom.window.document.querySelector("pre").textContent.trim();
+  const sample = dom.window.document.querySelector("pre")?.textContent?.trim();
   const article = dom.window.document
     .querySelector("article.day-desc")
-    .textContent.trim();
+    ?.textContent.trim();
   fs.writeFileSync(
     `${daydir}/day${day}.test.ts`,
     `import day${day} from "./day${day}";
 import { lines } from "../util";
 
-const sampleInput = ${JSON.stringify(sample.split("\n"), null, 2)};
+const sampleInput = ${JSON.stringify(sample?.split("\n"), null, 2)};
 const puzzleInput = lines(__dirname + "/input.txt");
 
 /**
