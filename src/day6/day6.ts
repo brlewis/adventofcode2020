@@ -1,32 +1,31 @@
-export const parse = (lines: string[]) =>
-  lines.map((line) => {
+export const parse = (paragraphs: string[][]) =>
+  paragraphs.map((lines) => {
     let x: { [key: string]: number } = {};
-    for (let i = 0; i < line.length; i++) {
-      if (/[a-z]/.test(line[i])) {
-        x[line[i]] = 1;
+    lines.forEach((line: string) => {
+      for (let i = 0; i < line.length; i++) {
+        if (/[a-z]/.test(line[i])) {
+          x[line[i]] = 1;
+        }
       }
-    }
+    });
     return Object.keys(x).length;
   });
 
-export const parse2 = (paras: string[]) =>
+export const parse2 = (paras: string[][]) =>
   paras.map((para) => {
     let x: { [key: string]: number } = {};
     for (let i = 0; i < 26; i++) {
       x["abcdefghijklmnopqrstuvwxyz"[i]] = 1;
     }
-    para
-      .trim()
-      .split("\n")
-      .forEach((line) => {
-        for (let i = 0; i < para.length; i++) {
-          Object.keys(x).forEach((key) => {
-            if (line.indexOf(key) == -1) {
-              delete x[key];
-            }
-          });
-        }
-      });
+    para.forEach((line) => {
+      for (let i = 0; i < para.length; i++) {
+        Object.keys(x).forEach((key) => {
+          if (line.indexOf(key) == -1) {
+            delete x[key];
+          }
+        });
+      }
+    });
     return Object.keys(x).length;
   });
 
@@ -38,7 +37,7 @@ export const part1 = (data: number[]) => {
   return c;
 };
 
-export const part2 = (data) => {
+export const part2 = (data: number[]) => {
   return part1(data);
 };
 

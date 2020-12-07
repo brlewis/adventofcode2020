@@ -58,14 +58,18 @@ const puzzleInput = paragraphs(__dirname + "/input.txt");
 
 describe("Day 6 parse", () => {
   it("should parse", () => {
-    const result = day6.parse(sampleInput.split("\n\n"));
+    const result = day6.parse(
+      sampleInput.split("\n\n").map((para) => para.split("\n"))
+    );
     expect(result).toEqual([3, 3, 3, 1, 1]);
   });
 });
 
 describe("Day 6 part1", () => {
   it("should work", () => {
-    const data = day6.parse(sampleInput.split("\n\n"));
+    const data = day6.parse(
+      sampleInput.split("\n\n").map((para) => para.split("\n"))
+    );
     expect(day6.part1(data)).toEqual(11);
   });
   it("should solve", () => {
@@ -76,11 +80,13 @@ describe("Day 6 part1", () => {
 
 describe("Day 6 part2", () => {
   it("should work", () => {
-    const data = day6.parse2(sampleInput.split("\n\n"));
-    expect(day6.part2(data)).toEqual(6);
+    const data = day6.parse(
+      sampleInput.split("\n\n").map((para) => para.split("\n"))
+    );
+    expect(day6.part2(data)).toEqual(11);
   });
   it("should solve", () => {
     const data = day6.parse2(puzzleInput);
-    expect(day6.part2(data)).toEqual(-2);
+    expect(day6.part2(data)).toEqual(3570);
   });
 });
