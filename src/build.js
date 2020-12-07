@@ -50,10 +50,10 @@ getContents(`/${year}/day/${day}`, (contents) => {
   fs.writeFileSync(
     `${daydir}/day${day}.test.ts`,
     `import day${day} from "./day${day}";
-import { lines } from "../util";
+import { paragraphs } from "../util";
 
 const sampleInput = ${JSON.stringify(sample?.split("\n"), null, 2)};
-const puzzleInput = lines(__dirname + "/input.txt");
+const puzzleInput = paragraphs(__dirname + "/input.txt");
 
 /**
  * ${article.split("\n").join("\n * ")}

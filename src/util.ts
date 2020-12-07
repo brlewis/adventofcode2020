@@ -11,5 +11,6 @@ export const paragraphs = (filename: string) => {
   return fs
     .readFileSync(filename, "utf-8")
     .split(/\r?\n\r?\n/)
-    .filter((x) => x);
+    .filter((x) => x)
+    .map((paragraph) => paragraph.split(/\r?\n/).filter((x) => x));
 };
