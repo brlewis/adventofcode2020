@@ -94,6 +94,6 @@ describe("Day 9 part2", () => {
   });
   it("should solve", () => {
     const data = day9.parse(puzzleInput[0]);
-    expect(day9.part2(data, 25)).toEqual(-2);
+    expect(day9.part2(data, 25)).toEqual(137394018);
   });
 });
