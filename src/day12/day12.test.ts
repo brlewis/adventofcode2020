@@ -83,6 +83,6 @@ describe("Day 12 part2", () => {
   });
   it("should solve", () => {
     const data = day12.parse(puzzleInput[0]);
-    expect(day12.part2(data)).toEqual(-2);
+    expect(day12.part2(data)).toEqual(35292);
   });
 });

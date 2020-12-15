@@ -30,7 +30,6 @@ export const part2 = (data: number[]) => {
   data.sort((a, b) => a - b);
   for (let i = 0; i < data.length - 1; i++) {
     if (data[i + 1] - data[i] === 2) {
-      console.log(i);
       return data[i] + 1;
     }
   }
