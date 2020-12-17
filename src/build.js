@@ -42,7 +42,14 @@ getContents(`/${year}/day/${day}/input`, (contents) => {
 // Save description
 getContents(`/${year}/day/${day}`, (contents) => {
   const dom = new JSDOM(contents);
-  const sample = dom.window.document.querySelector("pre")?.textContent?.trim();
+  const samples = [...dom.window.document.querySelectorAll("pre")].map((pre) =>
+    pre.textContent?.trim()
+  );
+  samples.forEach((s, i) =>
+    fs.writeFile(`${daydir}/pre${i}.txt`, s, {}, () => {})
+  );
+
+  const sample = samples.length && samples[0];
   const article = dom.window.document
     .querySelector("article.day-desc")
     ?.textContent.trim();
@@ -51,7 +58,7 @@ getContents(`/${year}/day/${day}`, (contents) => {
     `import day${day} from "./day${day}";
 import { paragraphs } from "../util";
 
-const sampleInput = ${JSON.stringify(sample?.split("\n"), null, 2)};
+const sampleInput = paragraphs(__dirname + "/pre0.txt");
 const puzzleInput = paragraphs(__dirname + "/input.txt");
 
 /**
@@ -60,29 +67,29 @@ const puzzleInput = paragraphs(__dirname + "/input.txt");
 
 describe("Day ${day} parse", () => {
   it("should parse", () => {
-      const result = day${day}.parse(sampleInput);
-      expect(result).toEqual(sampleInput);
+      const result = day${day}.parse(sampleInput[0]);
+      expect(result).toEqual(sampleInput[0]);
   });
 });
 
 describe("Day ${day} part1", () => {
   it("should work", () => {
-    const data = day${day}.parse(sampleInput);
+    const data = day${day}.parse(sampleInput[0]);
     expect(day${day}.part1(data)).toEqual(-1);
   });
   it("should solve", () => {
-    const data = day${day}.parse(puzzleInput);
+    const data = day${day}.parse(puzzleInput[0]);
     expect(day${day}.part1(data)).toEqual(-2);
   });
 });
 
 describe("Day ${day} part2", () => {
   it("should work", () => {
-    const data = day${day}.parse(sampleInput);
+    const data = day${day}.parse(sampleInput[0]);
     expect(day${day}.part2(data)).toEqual(-1);
   });
   it("should solve", () => {
-    const data = day${day}.parse(puzzleInput);
+    const data = day${day}.parse(puzzleInput[0]);
     expect(day${day}.part2(data)).toEqual(-2);
   });
 });`
@@ -91,19 +98,21 @@ describe("Day ${day} part2", () => {
 
 fs.writeFileSync(
   `${daydir}/day${day}.ts`,
-  `export const parse = (lines: string[]) =>
+  `import * as _ from "lodash";
+
+export const parse = (lines: string[]) =>
   lines.map((line) => {
     return line;
 });
 
-export const part1 = (data) => {
+export const part1 = (data: any[]) => {
   return data.length;
 };
 
-export const part2 = (data) => {
+export const part2 = (data: any[]) => {
   return part1(data);
 };
 
 export default { parse, part1, part2 };
-`
+    `
 );
