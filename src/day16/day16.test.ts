@@ -82,6 +82,6 @@ describe("Day 16 part2", () => {
   });
   it("should solve", () => {
     const data = day16.parse(puzzleInput);
-    expect(day16.part2(data)).toEqual(-2);
+    expect(day16.part2(data)).toEqual(3902565915559);
   });
 });
