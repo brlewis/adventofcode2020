@@ -14,3 +14,8 @@ export const paragraphs = (filename: string) => {
     .filter((x) => x)
     .map((paragraph) => paragraph.split(/\r?\n/).filter((x) => x));
 };
+
+export const num = (str: string) => {
+  let n = parseInt(str);
+  return isNaN(n) ? str : n;
+};
