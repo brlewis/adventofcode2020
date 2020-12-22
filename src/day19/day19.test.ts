@@ -3,6 +3,7 @@ import { paragraphs } from "../util";
 
 const sampleInput = paragraphs(__dirname + "/pre0.txt");
 const sampleInput2 = paragraphs(__dirname + "/pre2.txt");
+const sampleInput3 = paragraphs(__dirname + "/pre3.txt");
 const puzzleInput = paragraphs(__dirname + "/input.txt");
 
 /**
@@ -54,10 +55,12 @@ describe("Day 19 parse", () => {
       {
         index: 0,
         rule: [[1, 2]],
+        depth: 0,
       },
       {
         index: 1,
         rule: "a",
+        depth: 0,
       },
       {
         index: 2,
@@ -65,10 +68,12 @@ describe("Day 19 parse", () => {
           [1, 3],
           [3, 1],
         ],
+        depth: 0,
       },
       {
         index: 3,
         rule: "b",
+        depth: 0,
       },
     ]);
   });
@@ -86,9 +91,9 @@ describe("Day 19 part1", () => {
 });
 
 describe("Day 19 part2", () => {
-  it.skip("should work", () => {
-    const data = day19.parse(sampleInput[0]);
-    expect(day19.part2(data)).toEqual(-1);
+  it("should work", () => {
+    const data = day19.parse(sampleInput3[0]);
+    expect(day19.part2(data, sampleInput3[1], 2)).toEqual(12);
   });
   it.skip("should solve", () => {
     const data = day19.parse(puzzleInput[0]);
