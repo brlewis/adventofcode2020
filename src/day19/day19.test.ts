@@ -55,12 +55,10 @@ describe("Day 19 parse", () => {
       {
         index: 0,
         rule: [[1, 2]],
-        depth: 0,
       },
       {
         index: 1,
         rule: "a",
-        depth: 0,
       },
       {
         index: 2,
@@ -68,12 +66,10 @@ describe("Day 19 parse", () => {
           [1, 3],
           [3, 1],
         ],
-        depth: 0,
       },
       {
         index: 3,
         rule: "b",
-        depth: 0,
       },
     ]);
   });
@@ -84,14 +80,14 @@ describe("Day 19 part1", () => {
     const data = day19.parse(sampleInput2[0]);
     expect(day19.part1(data, sampleInput2[1])).toEqual(2);
   });
-  it.skip("should solve", () => {
+  it("should solve", () => {
     const data = day19.parse(puzzleInput[0]);
     expect(day19.part1(data, puzzleInput[1])).toEqual(162);
   });
 });
 
 describe("Day 19 part2", () => {
-  it("should work", () => {
+  it.skip("should work", () => {
     const data = day19.parse(sampleInput3[0]);
     expect(day19.part2(data, sampleInput3[1], 2)).toEqual(12);
   });
