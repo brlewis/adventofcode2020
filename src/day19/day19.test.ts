@@ -87,12 +87,12 @@ describe("Day 19 part1", () => {
 });
 
 describe("Day 19 part2", () => {
-  it.skip("should work", () => {
+  it("should work", () => {
     const data = day19.parse(sampleInput3[0]);
-    expect(day19.part2(data, sampleInput3[1], 2)).toEqual(12);
+    expect(day19.part2(data, sampleInput3[1])).toEqual(12);
   });
-  it.skip("should solve", () => {
+  it("should solve", () => {
     const data = day19.parse(puzzleInput[0]);
-    expect(day19.part2(data)).toEqual(-2);
+    expect(day19.part2(data, puzzleInput[1])).toEqual(267);
   });
 });
