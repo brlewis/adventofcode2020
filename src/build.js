@@ -5,7 +5,7 @@ const { JSDOM } = jsdom;
 
 const hoy = new Date();
 const year = hoy.getFullYear();
-const day = hoy.getDate();
+const day = process.env.AOCDAY || hoy.getDate();
 
 const getContents = (path, callback) => {
   let contents = "";
