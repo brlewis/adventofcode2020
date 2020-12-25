@@ -122,7 +122,7 @@ describe("Day 22 part1", () => {
   });
   it("should solve", () => {
     const data = day22.parse(puzzleInput);
-    expect(day22.part1(data)).toEqual(-2);
+    expect(day22.part1(data)).toEqual(33631);
   });
 });
 
