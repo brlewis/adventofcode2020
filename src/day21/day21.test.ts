@@ -46,12 +46,14 @@ describe("Day 21 part1", () => {
 });
 
 describe("Day 21 part2", () => {
-  it.skip("should work", () => {
+  it("should work", () => {
     const data = day21.parse(sampleInput[0]);
-    expect(day21.part2(data)).toEqual(-1);
+    expect(day21.part2(data)).toEqual("mxmxvkd,sqjhc,fvjkl");
   });
-  it.skip("should solve", () => {
+  it("should solve", () => {
     const data = day21.parse(puzzleInput[0]);
-    expect(day21.part2(data)).toEqual(-2);
+    expect(day21.part2(data)).toEqual(
+      "mfp,mgvfmvp,nhdjth,hcdchl,dvkbjh,dcvrf,bcjz,mhnrqp"
+    );
   });
 });
