@@ -94,12 +94,14 @@ describe("Day 23 part1", () => {
 });
 
 describe("Day 23 part2", () => {
-  it.skip("should work", () => {
-    const data = day23.parse(sampleInput[0]);
-    expect(day23.part2(data)).toEqual(-1);
+  it("should work", () => {
+    const data = day23.parse(sampleInput[0])[0];
+    expect(day23.part2(data, 10, 0)).toEqual(18);
+    expect(day23.part2(data, 100, 0)).toEqual(42);
+    expect(day23.part2(data, 10_000_000, 1_000_000)).toEqual(149245887792);
   });
-  it.skip("should solve", () => {
-    const data = day23.parse(puzzleInput[0]);
-    expect(day23.part2(data)).toEqual(-2);
+  it("should solve", () => {
+    const data = day23.parse(puzzleInput[0])[0];
+    expect(day23.part2(data, 10_000_000, 1_000_000)).toEqual(519044017360);
   });
 });
