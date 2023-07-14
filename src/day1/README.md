@@ -66,3 +66,5 @@ Follow the instructions in the [top-level README](../../README.md) and start the
 
 * Don't delete the `return false` at the end, because that's needed for part 2 of day 1.
 * Use `desiredSum` rather than hard-coding `2020`, because that's also needed for part 2 of day 1.
+* After you're comfortable coding solutions in your IDE, try coding them on a whiteboard. (Interviewers don't expect your syntax to be perfect, just that you have an idea how to solve the problem.)
+* If it would help to watch me type the solutions, watch https://youtu.be/sMuvF9x99lE
