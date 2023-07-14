@@ -37,15 +37,32 @@ The direct translation of the problem into a solution would look like this:
 ```typescript
 for (const a of entries) {
   for (const b of entries) {
-    if (a + b === 2020) {
+    if (a + b === desiredSum) {
       return a * b;
     }
   }
 }
 ```
 
-Intuitively, though, this seems inefficient.
+Intuitively, though, this seems inefficient. If the expense report has `n` numbers in it, we'll have `n<sup>2</sup>` loop iterations, also known as O(n<sup>2</sup>). (Definitely learn big O notation before interviewing.) Once we've picked an `a`, we know what `b` we want, right? Since `a + b = 2020` we know from Algebra that `b = 2020 - a`.
 
-## Now try coding
+This optimization occurred to me when I was doing this problem just after midnight, December 2, 2020. You can see the result in [day1.ts](day1.ts). I sorted the input and used a binary search utility to find the right `b`. As I look at this solution in hindsight and in normal daytime hours, there's a significantly more efficient solution using [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set#instance_methods).
 
-Follow the instructions in the [top-level README](../../README.md) and start the test runner. Try deleting function bodies in [day1.ts](day1.ts)
+```typescript
+const set = new Set(entries);
+for (const a of entries) {
+  const b = desiredSum - a;
+  if (set.has(b)) {
+    return a * b;
+  }
+}
+```
+
+This solution is O(n). It makes two passes through the `entries` array: one to construct the set, and another to find `a` and `b`. There's another solution with only 1 pass through the array, left as an exercise for the reader.
+
+## Code it yourself.
+
+Follow the instructions in the [top-level README](../../README.md) and start the test runner. Try deleting the `expenseReport` function body in [day1.ts](day1.ts) and coding it yourself. Check if the tests still pass.
+
+* Don't delete the `return false` at the end, because that's needed for part 2 of day 1.
+* Use `desiredSum` rather than hard-coding `2020`, because that's also needed for part 2 of day 1.
