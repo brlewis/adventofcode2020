@@ -1,34 +1,39 @@
+// I made this script to scaffold each new day's code.
+// Need to get a cookie value from your browser, then run, e.g.
+// to scaffold day 1:
+// `AOCDAY=1 session=[cookie value] node src/build.js`
+
 const fs = require("fs");
 const https = require("https");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
 const hoy = new Date();
-const year = hoy.getFullYear();
+const year = 2020 // hoy.getFullYear();
 const day = process.env.AOCDAY || hoy.getDate();
 
 const getContents = (path, callback) => {
-  let contents = "";
+    let contents = "";
 
-  const options = {
-    hostname: "adventofcode.com",
-    path,
-    port: 443,
-    headers: {
-      Cookie: `session=${process.env.session}`,
-    },
-  };
+    const options = {
+        hostname: "adventofcode.com",
+        path,
+        port: 443,
+        headers: {
+            Cookie: `session=${process.env.session}`,
+        },
+    };
 
-  const req = https.get(options, (res) => {
-    res.setEncoding("utf8");
-    res.on("data", (chunk) => {
-      contents += chunk;
+    const req = https.get(options, (res) => {
+        res.setEncoding("utf8");
+        res.on("data", (chunk) => {
+            contents += chunk;
+        });
+        res.on("end", () => callback(contents));
+        req.on("error", (e) => {
+            console.error(`problem with request: ${e.message}`);
+        });
     });
-    res.on("end", () => callback(contents));
-    req.on("error", (e) => {
-      console.error(`problem with request: ${e.message}`);
-    });
-  });
 };
 
 const daydir = `src/day${day}`;
@@ -36,26 +41,26 @@ fs.mkdirSync(daydir, { recursive: true });
 
 // Save input for reading
 getContents(`/${year}/day/${day}/input`, (contents) => {
-  fs.writeFileSync(`${daydir}/input.txt`, contents);
+    fs.writeFileSync(`${daydir}/input.txt`, contents);
 });
 
 // Save description
 getContents(`/${year}/day/${day}`, (contents) => {
-  const dom = new JSDOM(contents);
-  const samples = [...dom.window.document.querySelectorAll("pre")].map((pre) =>
-    pre.textContent?.trim()
-  );
-  samples.forEach((s, i) =>
-    fs.writeFile(`${daydir}/pre${i}.txt`, s, {}, () => {})
-  );
+    const dom = new JSDOM(contents);
+    const samples = [...dom.window.document.querySelectorAll("pre")].map((pre) =>
+        pre.textContent?.trim()
+    );
+    samples.forEach((s, i) =>
+        fs.writeFile(`${daydir}/pre${i}.txt`, s, {}, () => { })
+    );
 
-  const sample = samples.length && samples[0];
-  const article = dom.window.document
-    .querySelector("article.day-desc")
-    ?.textContent.trim();
-  fs.writeFileSync(
-    `${daydir}/day${day}.test.ts`,
-    `import day${day} from "./day${day}";
+    const sample = samples.length && samples[0];
+    const article = dom.window.document
+        .querySelector("article.day-desc")
+        ?.textContent.trim();
+    fs.writeFileSync(
+        `${daydir}/day${day}.test.ts`,
+        `import day${day} from "./day${day}";
 import { paragraphs } from "../util";
 
 const sampleInput = paragraphs(__dirname + "/pre0.txt");
@@ -93,12 +98,12 @@ describe("Day ${day} part2", () => {
     expect(day${day}.part2(data)).toEqual(-2);
   });
 });`
-  );
+    );
 });
 
 fs.writeFileSync(
-  `${daydir}/day${day}.ts`,
-  `import * as _ from "lodash";
+    `${daydir}/day${day}.ts`,
+    `import * as _ from "lodash";
 
 export const parse = (lines: string[]) =>
   lines.map((line) => {
