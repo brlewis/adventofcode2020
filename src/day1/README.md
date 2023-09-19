@@ -1,4 +1,4 @@
-# Interview practice day 1
+# Interview practice day 1, part 1
 
 ## Have fun with this
 
@@ -68,3 +68,9 @@ Follow the instructions in the [top-level README](../../README.md) and start the
 * Use `desiredSum` rather than hard-coding `2020`, because that's also needed for part 2 of day 1.
 * After you're comfortable coding solutions in your IDE, try coding them on a whiteboard. (Interviewers don't expect your syntax to be perfect, just that you have an idea how to solve the problem.)
 * If it would help to watch me type the solutions, watch https://youtu.be/sMuvF9x99lE
+
+# Interview practice day 1, part 2
+
+One day of Advent of Code parallels how coding interviews often go. Often there's a followup question, somewhat harder than the initial question, to test the limits of people who quickly answer the initial question. Front-end interviews don't always work this way. Sometimes the initial question is all the interviewer needs to see if the candidate can code well enough for the position.
+
+If you're going to interview at a company that expects strong coding and algorithms skills, you should do the "part 2" challenges in Advent of Code. Stop here and go back to [2020 day 1](https://adventofcode.com/2020/day/1) to see if you can solve the first one yourself. (You have to input your answer to part 1 before it will show you part 2.)
